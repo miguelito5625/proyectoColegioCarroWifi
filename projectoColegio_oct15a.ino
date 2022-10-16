@@ -71,32 +71,32 @@ void iniciarCarro() {
   analogWrite(enableIzq, velocidad);
   analogWrite(enableDer, velocidad);
 
-  if(vPin1Adelante){
+  if (vPin1Adelante) {
     Serial.println("Mov Adelante");
     adelante();
   }
 
-  if(vPin2Atras){
+  if (vPin2Atras) {
     Serial.println("Mov Atras");
     atras();
   }
 
-  if(vPin3Izquierda){
+  if (vPin3Izquierda) {
     Serial.println("Mov Izquierda");
     izquierda();
   }
 
-  if(vPin4Derecha){
+  if (vPin4Derecha) {
     Serial.println("Mov Drecha");
     derecha();
   }
 
-  if(!vPin1Adelante && !vPin2Atras && !vPin3Izquierda && !vPin4Derecha){
+  if (!vPin1Adelante && !vPin2Atras && !vPin3Izquierda && !vPin4Derecha) {
     Serial.println("Detenido");
-    }
+    detener();
+  }
   Serial.println("Velocidad: " + String(velocidad));
 
-  delay(1000);
 }
 
 void adelante() {
@@ -109,8 +109,6 @@ void adelante() {
 }
 
 void atras() {
-  //  analogWrite(enableIzq, velocidad);
-  //  analogWrite(enableDer, velocidad);
   digitalWrite(pin1MotorIzq, 0);
   digitalWrite(pin2MotorIzq, 1);
   digitalWrite(pin1MotorDer, 0);
@@ -118,26 +116,20 @@ void atras() {
 }
 
 void izquierda() {
-  //  analogWrite(enableIzq, velocidad);
-  //  analogWrite(enableDer, velocidad);
-  digitalWrite(pin1MotorIzq, 0);
-  digitalWrite(pin2MotorIzq, 0);
-  digitalWrite(pin1MotorDer, 1);
-  digitalWrite(pin2MotorDer, 0);
-}
-
-void derecha() {
-  //  analogWrite(enableIzq, velocidad);
-  //  analogWrite(enableDer, velocidad);
   digitalWrite(pin1MotorIzq, 1);
   digitalWrite(pin2MotorIzq, 0);
   digitalWrite(pin1MotorDer, 0);
   digitalWrite(pin2MotorDer, 0);
 }
 
+void derecha() {
+  digitalWrite(pin1MotorIzq, 0);
+  digitalWrite(pin2MotorIzq, 0);
+  digitalWrite(pin1MotorDer, 1);
+  digitalWrite(pin2MotorDer, 0);
+}
+
 void detener() {
-  //  analogWrite(enableIzq, velocidad);
-  //  analogWrite(enableDer, velocidad);
   digitalWrite(pin1MotorIzq, 0);
   digitalWrite(pin2MotorIzq, 0);
   digitalWrite(pin1MotorDer, 0);
@@ -195,7 +187,7 @@ void onVPin4DerechaChange()  {
 */
 void onVpin5VelocidadChange()  {
   // Add your code here to act upon Vpin5Velocidad change
-  velocidad = (vpin5Velocidad * 250)/100;
+  velocidad = (vpin5Velocidad * 250) / 100;
   Serial.println("Velocidad: " + String(velocidad));
 
 }
