@@ -1,0 +1,3 @@
+#define SECRET_SSID "Exbinario_ext"
+#define SECRET_OPTIONAL_PASS "a1a2a3a4a5"
+#define SECRET_DEVICE_KEY "MXLQY6DDDKSSC7E4AJ5O"
